@@ -1,0 +1,345 @@
+1.    Bob has his money deposited $1000, $1500 and $2000 in banks-Bank A, Bank B and Bank C respectively. We have to print the money deposited by him in a particular bank.
+Create a class 'Bank' with a method 'getBalance' which returns 0 and another method ‘applyInterest’ which return the accountbalance. Make its three subclasses named 'BankA', 'BankB' and 'BankC' with a method with the same name 'getBalance' which returns the amount deposited in that particular bank. Override the method ‘applyInterest’ by adding the interest calculated with the Bank’s interest rate (Static variable for the Bank class). Call the method 'getBalance' and ‘applyInterest’ by the
+Object of each of the three banks.
+
+
+class Bank {
+    
+    protected static double interestRate = 0.0;
+
+    
+    public double getBalance() {
+        return 0;
+    }
+
+   
+    public double applyInterest() {
+        return getBalance();
+    }
+}
+
+class BankA extends Bank {
+    private double balance;
+
+    public BankA(double balance) {
+        this.balance = balance;
+        interestRate = 0.03;
+    }
+
+    @Override
+    public double getBalance() {
+        return balance;
+    }
+
+    @Override
+    public double applyInterest() {
+        return balance + (balance * interestRate);
+    }
+}
+
+
+class BankB extends Bank {
+    private double balance;
+
+    public BankB(double balance) {
+        this.balance = balance;
+        interestRate = 0.04; 
+    }
+
+    @Override
+    public double getBalance() {
+        return balance;
+    }
+
+    @Override
+    public double applyInterest() {
+        return balance + (balance * interestRate);
+    }
+}
+
+class BankC extends Bank {
+    private double balance;
+
+    public BankC(double balance) {
+        this.balance = balance;
+        interestRate = 0.05; 
+    }
+
+    @Override
+    public double getBalance() {
+        return balance;
+    }
+
+    @Override
+    public double applyInterest() {
+        return balance + (balance * interestRate);
+    }
+}
+
+public class BankTest {
+    public static void main(String[] args) {
+        
+        BankA bankA = new BankA(1000);
+        BankB bankB = new BankB(1500);
+        BankC bankC = new BankC(2000);
+
+        
+        System.out.printf("Balance in Bank A: $%.2f\n", bankA.getBalance());
+        System.out.printf("Balance in Bank A after interest: $%.2f\n", bankA.applyInterest());
+
+        System.out.printf("Balance in Bank B: $%.2f\n", bankB.getBalance());
+        System.out.printf("Balance in Bank B after interest: $%.2f\n", bankB.applyInterest());
+
+        System.out.printf("Balance in Bank C: $%.2f\n", bankC.getBalance());
+        System.out.printf("Balance in Bank C after interest: $%.2f\n", bankC.applyInterest());
+    }
+}
+
+
+2.    Create a class to print the area of a square and a rectangle.The class has two methods ‘printArea’ and ‘printPerimeter’ with the same name but different number of parameters. The method for printing area of
+Rectangle has two parameters which are length and breadth respectively while the other method for printing area of square has one parameter which is side of square.
+
+
+public class AreaCalculator {
+
+   
+    public void printArea(double side) {
+        double area = side * side;
+        System.out.printf("Area of the square: %.2f\n", area);
+    }
+
+    
+    public void printArea(double length, double breadth) {
+        double area = length * breadth;
+        System.out.printf("Area of the rectangle: %.2f\n", area);
+    }
+
+   
+    public void printPerimeter(double side) {
+        double perimeter = 4 * side;
+        System.out.printf("Perimeter of the square: %.2f\n", perimeter);
+    }
+
+   
+    public void printPerimeter(double length, double breadth) {
+        double perimeter = 2 * (length + breadth);
+        System.out.printf("Perimeter of the rectangle: %.2f\n", perimeter);
+    }
+
+    
+    public static void main(String[] args) {
+        AreaCalculator calculator = new AreaCalculator();
+
+        
+        double squareSide = 5.0;
+        calculator.printArea(squareSide);
+        calculator.printPerimeter(squareSide);
+
+        
+        double rectangleLength = 10.0;
+        double rectangleBreadth = 4.0;
+        calculator.printArea(rectangleLength, rectangleBreadth);
+        calculator.printPerimeter(rectangleLength, rectangleBreadth);
+    }
+}
+
+
+3.    Create a class 'Student' with three data members which are name, age and address. The constructor of the class assigns default values name as "unknown", age as '0' and address as "not available". It has two
+Members with the same name 'setInfo'. First method has two
+parameters for name and age and assigns the same whereas the second method takes has three parameters which are assigned to name, age and address respectively. Print the name, age and address of 10 students.
+Hint-Use array of objects.
+
+
+class Student {
+   
+    private String name;
+    private int age;
+    private String address;
+
+    
+    public Student() {
+        this.name = "unknown";
+        this.age = 0;
+        this.address = "not available";
+    }
+
+    
+    public void setInfo(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    
+    public void setInfo(String name, int age, String address) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+    }
+
+    
+    public void printInfo() {
+        System.out.printf("Name: %s, Age: %d, Address: %s\n", name, age, address);
+    }
+}
+
+public class StudentTest {
+    public static void main(String[] args) {
+        
+        Student[] students = new Student[10];
+
+        
+        for (int i = 0; i < students.length; i++) {
+            students[i] = new Student(); 
+        }
+
+        
+        students[0].setInfo("Alice", 20, "123 Main St");
+        students[1].setInfo("Bob", 21, "456 Maple Ave");
+        students[2].setInfo("Charlie", 22, "789 Elm St");
+        students[3].setInfo("Diana", 19, "321 Oak St");
+        students[4].setInfo("Ethan", 23, "654 Pine St");
+        students[5].setInfo("Fiona", 20, "987 Cedar St");
+        students[6].setInfo("George", 22, "159 Birch St");
+        students[7].setInfo("Hannah", 21, "753 Spruce St");
+        students[8].setInfo("Isaac", 19, "951 Walnut St");
+        students[9].setInfo("Julia", 20, "852 Chestnut St");
+
+       
+        for (Student student : students) {
+            student.printInfo();
+        }
+    }
+}
+
+
+
+
+4.    Create a class 'Degree' having a method 'getDegree' that prints"I got a degree". It has two subclasses namely 'Undergraduate' and
+'Postgraduate'each having a method with the same name that prints"I am an Undergraduate" and "I am a Postgraduate" respectively.Call the method by creating an object of each of the three classes.
+
+
+class Degree {
+   
+    public void getDegree() {
+        System.out.println("I got a degree.");
+    }
+}
+
+
+class Undergraduate extends Degree {
+    
+    @Override
+    public void getDegree() {
+        System.out.println("I am an Undergraduate.");
+    }
+}
+
+
+class Postgraduate extends Degree {
+    
+    @Override
+    public void getDegree() {
+        System.out.println("I am a Postgraduate.");
+    }
+}
+
+public class DegreeTest {
+    public static void main(String[] args) {
+        
+        Degree degree = new Degree();
+        Undergraduate undergraduate = new Undergraduate();
+        Postgraduate postgraduate = new Postgraduate();
+
+       
+        degree.getDegree();          
+        undergraduate.getDegree();   
+        postgraduate.getDegree();   
+    }
+}
+
+
+
+5.Implement Multilevel Inheritance with Method Overriding
+    Create a base class Person.Create a subclass Employee that extends Person, and includes the methods work() and getSalary().Create another subclass HRManager that extends Employee, overrides the work() method, and adds a new method addEmployee() to simulate adding employees.
+Class comments
+
+
+class Person {
+    protected String name;
+    protected int age;
+
+    
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    
+    public void displayDetails() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+
+class Employee extends Person {
+    private double salary;
+
+   
+    public Employee(String name, int age, double salary) {
+        super(name, age);  
+        this.salary = salary;
+    }
+
+    
+    public void work() {
+        System.out.println(name + " is working.");
+    }
+
+    
+    public double getSalary() {
+        return salary;
+    }
+
+    
+    @Override
+    public void displayDetails() {
+        super.displayDetails(); // Call to parent method
+        System.out.println("Salary: " + salary);
+    }
+}
+
+
+class HRManager extends Employee {
+    
+    
+    public HRManager(String name, int age, double salary) {
+        super(name, age, salary); 
+    }
+
+    
+    @Override
+    public void work() {
+        System.out.println(name + " is managing human resources.");
+    }
+
+    
+    public void addEmployee(String employeeName) {
+        System.out.println(name + " has added employee: " + employeeName);
+    }
+}
+
+public class MultilevelInheritanceTest {
+    public static void main(String[] args) {
+        
+        HRManager hrManager = new HRManager("Alice", 35, 80000.0);
+        
+        
+        hrManager.displayDetails();
+        
+        
+        hrManager.work();                   
+        hrManager.addEmployee("John Doe");  
+        System.out.println("Salary: " + hrManager.getSalary()); 
+    }
+}
+
